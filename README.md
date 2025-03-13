@@ -42,7 +42,7 @@ cp .env.example .env
 
 ### Database Connection
 
-The project is configured to connect to our AWS RDS PostgreSQL instance. The connection details are provided in the `.env.example` file. Make sure to update your `.env` file with the credentials provided separately.
+The project is configured to connect to a dummy AWS RDS PostgreSQL instance. The connection details are provided in the `.env.example` file. Make sure to update your `.env` file with the credentials provided separately.
 
 The database schema is provided in `config/database_schema.json`. You can use this to understand the database structure and create your SQLAlchemy models.
 
