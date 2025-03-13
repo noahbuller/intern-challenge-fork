@@ -1,0 +1,120 @@
+{
+  "athletes_new": {
+    "columns": [
+      ["athlete_id", "character varying", "NO", null, 12],
+      ["name", "character varying", "NO", null, 255],
+      ["school", "character varying", "NO", null, 255],
+      ["year", "character varying", "YES", null, 50],
+      ["score", "double precision", "YES", null, null]
+    ],
+    "primary_keys": ["athlete_id"],
+    "foreign_keys": [],
+    "indexes": [
+      ["athletes_new_name_school_key", "name", true],
+      ["athletes_new_name_school_key", "school", true],
+      ["athletes_new_pkey", "athlete_id", true]
+    ]
+  },
+  "athlete_ig": {
+    "columns": [
+      ["id", "character varying", "NO", null, 12],
+      ["handle", "character varying", "NO", null, 30],
+      ["followers", "integer", "YES", null, null],
+      ["posts", "integer", "YES", null, null],
+      ["is_private", "boolean", "YES", null, null],
+      ["fetch_time", "timestamp with time zone", "YES", "CURRENT_TIMESTAMP", null],
+      ["social_score", "double precision", "YES", null, null]
+    ],
+    "primary_keys": ["id"],
+    "foreign_keys": [],
+    "indexes": [
+      ["athlete_ig_pkey", "id", true],
+      ["idx_athlete_handle", "handle", false]
+    ]
+  },
+  "athletes_media": {
+    "columns": [
+      ["athlete_id", "character varying", "NO", null, 12],
+      ["headshot_url", "character varying", "YES", null, 255]
+    ],
+    "primary_keys": ["athlete_id"],
+    "foreign_keys": [
+      ["athlete_id", "athletes_new", "athlete_id"]
+    ],
+    "indexes": [
+      ["athletes_media_pkey", "athlete_id", true]
+    ]
+  },
+  "scores": {
+    "columns": [
+      ["score_id", "integer", "NO", "nextval('scores_score_id_seq'::regclass)", null],
+      ["athlete_id", "character varying", "YES", null, 12],
+      ["season", "integer", "NO", null, null],
+      ["score", "double precision", "NO", null, null],
+      ["created_at", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null],
+      ["updated_at", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null]
+    ],
+    "primary_keys": ["score_id"],
+    "foreign_keys": [
+      ["athlete_id", "athletes_new", "athlete_id"]
+    ],
+    "indexes": [
+      ["scores_athlete_season", "athlete_id", true],
+      ["scores_athlete_season", "season", true],
+      ["scores_pkey", "score_id", true]
+    ]
+  },
+  "brands": {
+    "columns": [
+      ["brand_id", "uuid", "NO", "gen_random_uuid()", null],
+      ["name", "character varying", "NO", null, 100],
+      ["logo_url", "character varying", "YES", null, 255],
+      ["industry", "character varying", "YES", null, 50],
+      ["website_url", "character varying", "YES", null, 255],
+      ["created_at", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null],
+      ["updated_at", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null]
+    ],
+    "primary_keys": ["brand_id"],
+    "foreign_keys": [],
+    "indexes": [
+      ["brands_name_key", "name", true],
+      ["brands_pkey", "brand_id", true],
+      ["idx_brands_name", "name", false]
+    ]
+  },
+  "signed_athletes": {
+    "columns": [
+      ["id", "integer", "NO", "nextval('signed_athletes_id_seq'::regclass)", null],
+      ["athlete_id", "character varying", "YES", null, 12],
+      ["brand_id", "character varying", "NO", null, 100],
+      ["signed_date", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null],
+      ["contract_details", "jsonb", "YES", null, null]
+    ],
+    "primary_keys": ["id"],
+    "foreign_keys": [
+      ["athlete_id", "athletes_new", "athlete_id"]
+    ],
+    "indexes": [
+      ["idx_signed_athletes_brand", "brand_id", false],
+      ["signed_athletes_athlete_id_brand_id_key", "athlete_id", true],
+      ["signed_athletes_athlete_id_brand_id_key", "brand_id", true],
+      ["signed_athletes_pkey", "id", true]
+    ]
+  },
+  "watchlist_athletes": {
+    "columns": [
+      ["athlete_id", "character varying", "YES", null, 12],
+      ["brand_id", "character varying", "NO", null, 100],
+      ["added_date", "timestamp without time zone", "YES", "CURRENT_TIMESTAMP", null],
+      ["notes", "jsonb", "YES", null, null]
+    ],
+    "primary_keys": [],
+    "foreign_keys": [
+      ["athlete_id", "athletes_new", "athlete_id"]
+    ],
+    "indexes": [
+      ["watchlist_athletes_athlete_id_brand_id_key", "athlete_id", true],
+      ["watchlist_athletes_athlete_id_brand_id_key", "brand_id", true]
+    ]
+  }
+}
