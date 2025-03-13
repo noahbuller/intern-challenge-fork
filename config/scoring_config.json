@@ -1,0 +1,40 @@
+{
+  "scoring_weights": {
+    "athletic_performance": 0.5,
+    "social_media": 0.3,
+    "brand_compatibility": 0.2
+  },
+  "social_media_factors": {
+    "followers": 0.6,
+    "engagement_rate": 0.3,
+    "content_quality": 0.1
+  },
+  "performance_factors": {
+    "recent_results": 0.7,
+    "improvement_trend": 0.2,
+    "competition_level": 0.1
+  },
+  "brand_compatibility_factors": {
+    "sport_relevance": 0.4,
+    "audience_alignment": 0.3,
+    "brand_values_match": 0.3
+  },
+  "follower_thresholds": {
+    "low": 1000,
+    "medium": 5000,
+    "high": 15000,
+    "very_high": 50000
+  },
+  "engagement_rate_thresholds": {
+    "low": 1.0,
+    "medium": 3.0,
+    "high": 6.0,
+    "very_high": 10.0
+  },
+  "performance_improvement_thresholds": {
+    "low": 1.0,
+    "medium": 5.0,
+    "high": 10.0,
+    "very_high": 20.0
+  }
+}
