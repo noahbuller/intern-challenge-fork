@@ -1,6 +1,6 @@
-# Javelin Sports Tech Intern Challenge
+# Javelin Intern Challenge
 
-This repository contains the starter code for the Javelin Sports Tech intern coding challenge. Your task is to build a FastAPI backend that interacts with our AWS RDS database and to create the NextJS API integration layer.
+This repository contains the starter code for the intern coding challenge. Your task is to build a FastAPI backend that interacts with our AWS RDS database and to create the NextJS API integration layer.
 
 ## Project Structure
 
