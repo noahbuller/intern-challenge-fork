@@ -1,5 +1,5 @@
 # Import relationship based on database_schema.json
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Double, Timestamp, JSON, UUID, func
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Double, Timestamp, JSONB, UUID, func, UniqueConstraint, Index
 
 # Import declarative base
 from sqlalchemy.orm import declarative_base
@@ -76,7 +76,7 @@ class Brands(Base):
     updated_at = Column(Timestamp, server_default = func.now(), onupdate = func.now())
 
     __table_args__ = (
-        UniqueConstraing ('name', name = 'brands_name_key'),
+        UniqueConstraint ('name', name = 'brands_name_key'),
         Index('brands_pkey', brand_id, unique = True),
         Index('idx_brands_name', name)
     )
@@ -105,5 +105,5 @@ class WatchListAthletes(Base):
     notes = Column(JSONB)
 
     __table_args__ = (
-        UniqueConstratin('athlete_id', 'brand_id', name = 'watchlist_athletes_athlete_id_brand_id_key'),
+        UniqueConstraint('athlete_id', 'brand_id', name = 'watchlist_athletes_athlete_id_brand_id_key'),
     )
