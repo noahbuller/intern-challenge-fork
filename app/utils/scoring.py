@@ -2,8 +2,8 @@ import os
 import json
 
 # Grab the scoring json file from the config dir
-SCORING_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "../config/scoring.json")
-
+SCORING_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "../../config/scoring_config.json")
+print(SCORING_CONFIG_PATH)
 # Function to get the scoring config file
 def load_scoring_config():
     with open(SCORING_CONFIG_PATH, "r") as f:

@@ -34,8 +34,6 @@ async def calculate_athlete_score(athlete_id: str, db: Session = Depends(get_db)
     return {"weighted_score": weighted_score}
 
 
-
-
 #API Endpoint to List All Athletes
 #Endpoint Type: GET
 #URL: /api/v1/athletes
