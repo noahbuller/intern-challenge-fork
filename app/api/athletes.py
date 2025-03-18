@@ -1,3 +1,4 @@
+#This file defines the API endpoints for FASTAPI
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from app.core.database import get_db
@@ -11,7 +12,6 @@ router = APIRouter()
 #API Endpoint to Get Athlete's Weighted Score
 #Endpoint Type: GET
 #Route URL: /api/v1/athletes/{athlete_id}/scoring_weights
-
 @router.get("/athletes/{athlete_id}/scoring_weights")
 async def calculate_athlete_score(athlete_id: str, db: Session = Depends(get_db)):
     athlete = db.query(AthletesNew).filter(AthletesNew.athlete_id == athlete_id).first()
@@ -40,6 +40,8 @@ async def calculate_athlete_score(athlete_id: str, db: Session = Depends(get_db)
 @router.get("/athletes")
 async def get_all_athletes(db: Session = Depends(get_db)):
     athletes = db.query(AthletesNew).all()
+    if not athletes:
+        raise HTTPException(status_code=404, detail="No Athletes Found")
     return athletes
 
 #API Endpoint to Get All Details for a Specific Athlete

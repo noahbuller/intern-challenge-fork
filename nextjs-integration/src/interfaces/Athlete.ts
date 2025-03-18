@@ -1,3 +1,6 @@
+//Definition: This interface maps directly from the athlete table in the database. 
+//It is used to define the shape of the data that is returned from the database when querying the athlete table.
+
 export interface Athlete{
     athlete_id: number;
     name: string;

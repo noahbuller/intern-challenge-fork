@@ -10,4 +10,5 @@ load_dotenv(dotenv_path=".env")
 async def root():
     return {"message": "Hello World"}
 
+#Prefix all routes with api/v1 to indivate "version 1" of the API -- this can eventually be removed or modified after development
 app.include_router(athletes.router, prefix="/api/v1")
